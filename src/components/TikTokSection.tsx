@@ -73,12 +73,12 @@ export const TikTokSection: React.FC<TikTokSectionProps> = ({ language }) => {
                   <img
                     src={
                       idx === 0
-                        ? '/src/assets/images/hero_toyota_suv_1793659735641.jpg'
+                        ? '/images/hero_toyota_suv_1793659735641.jpg'
                         : idx === 1
-                        ? '/src/assets/images/showcase_toyota_camry_1793659736918.jpg'
+                        ? '/images/showcase_toyota_camry_1793659736918.jpg'
                         : idx === 2
-                        ? '/src/assets/images/showcase_toyota_tacoma_1793659736887.jpg'
-                        : '/src/assets/images/showcase_toyota_rav4_1793659737791.jpg'
+                        ? '/images/showcase_toyota_tacoma_1793659736887.jpg'
+                        : '/images/showcase_toyota_rav4_1793659737791.jpg'
                     }
                     alt={`Promotional still for ${video.title}`}
                     loading="lazy"
@@ -87,6 +87,12 @@ export const TikTokSection: React.FC<TikTokSectionProps> = ({ language }) => {
                     height="710"
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     referrerPolicy="no-referrer"
+                    onError={(e) => {
+                      const el = e.currentTarget;
+                      if (!el.src.includes('/src/assets/images/')) {
+                        el.src = el.src.replace('/images/', '/src/assets/images/');
+                      }
+                    }}
                   />
                 </div>
 

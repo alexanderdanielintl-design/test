@@ -125,6 +125,12 @@ export const VehicleShowcase: React.FC<VehicleShowcaseProps> = ({
                     height="450"
                     className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
                     referrerPolicy="no-referrer"
+                    onError={(e) => {
+                      const el = e.currentTarget;
+                      if (!el.src.includes('/src/assets/images/') && el.src.includes('/images/')) {
+                        el.src = el.src.replace('/images/', '/src/assets/images/');
+                      }
+                    }}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent opacity-70" />
 

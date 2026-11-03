@@ -23,7 +23,7 @@ export const Hero: React.FC<HeroProps> = ({
       {/* Background Vehicle Image with high fetch priority and responsive object positioning */}
       <div className="absolute inset-0 z-0">
         <img
-          src="/src/assets/images/hero_toyota_suv_1793659735641.jpg"
+          src="/images/hero_toyota_suv_1793659735641.jpg"
           alt="Toyota SUV in Austin Texas"
           fetchPriority="high"
           decoding="async"
@@ -31,6 +31,12 @@ export const Hero: React.FC<HeroProps> = ({
           height="1080"
           className="w-full h-full object-cover object-[65%_center] sm:object-center brightness-[0.72] contrast-[1.05]"
           referrerPolicy="no-referrer"
+          onError={(e) => {
+            const el = e.currentTarget;
+            if (!el.src.includes('/src/assets/images/')) {
+              el.src = '/src/assets/images/hero_toyota_suv_1793659735641.jpg';
+            }
+          }}
         />
         {/* Responsive, smooth gradient overlays ensuring high contrast across all orientations */}
         <div className="absolute inset-0 bg-gradient-to-r from-black/95 via-black/80 to-black/40 sm:to-black/30" />

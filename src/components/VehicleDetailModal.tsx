@@ -97,6 +97,12 @@ export const VehicleDetailModal: React.FC<VehicleDetailModalProps> = ({
             decoding="async"
             className="w-full h-full object-cover object-center"
             referrerPolicy="no-referrer"
+            onError={(e) => {
+              const el = e.currentTarget;
+              if (!el.src.includes('/src/assets/images/') && el.src.includes('/images/')) {
+                el.src = el.src.replace('/images/', '/src/assets/images/');
+              }
+            }}
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/35 to-black/30" />
 
